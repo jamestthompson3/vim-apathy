@@ -5,6 +5,7 @@ if empty(b:node_modules)
   unlet b:node_modules
   finish
 endif
+
 call map(b:node_modules, 'fnamemodify(v:val, ":p:s?[\\/]$??")')
 
 if len(b:node_modules)
@@ -32,6 +33,7 @@ if len(tsconfig_file)
 endif
 
 call apathy#Prepend('path', b:node_modules, apathy#EnvSplit($NODE_PATH))
+
 setlocal include=^\\s*[^\/]\\+\\(from\\\|require(\\)\\s*['\"\.]
 let &l:define  = '^\s*\('
       \ . '\(export\s\)*\(default\s\)*\(var\|const\|let\|function\|class\|interface\)\s'
